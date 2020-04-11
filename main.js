@@ -12,8 +12,35 @@ const rl = readline.createInterface({
 
 
 const pigLatin = (word) => {
-
+    
   // Your code here
+  word = word.trim();
+  word = word.toLowerCase();
+  let wordarray = word.split("");
+  let vowelarray = ["a","e","i","o","u"];
+  let isVowelAtFront = false;
+  let front = ""; 
+  let end = ""; 
+  for(let index = 0;index < wordarray.length;index++){
+    let letter = wordarray[index];
+    if(vowelarray.includes(letter)){
+
+      front = word.substring(0,index);
+      end = word.substring(index);
+      if(index == 0){
+        isVowelAtFront = true;
+      }
+      break;
+    }
+
+  }
+
+  let ending = "ay";
+  if(isVowelAtFront){
+    ending = "yay";
+  }
+  word = end + front + ending
+  return word;
 
 }
 
